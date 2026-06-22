@@ -1,6 +1,6 @@
 [Unit]
 Description=JumpBox SSH Bastion
-Documentation=https://example.local/jumpbox
+Documentation=https://github.com/alptekinsunnetci/SSH-Jumpbox/
 After=network-online.target
 Wants=network-online.target
 
