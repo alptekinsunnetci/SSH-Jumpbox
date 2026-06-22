@@ -1,4 +1,4 @@
-# JumpBox — Hafif SSH Bastion (Türkçe öncelikli)
+# JumpBox — Hafif SSH Bastion 
 
 Tüm sunucu erişiminiz için **tek giriş noktası** olan; Go ile yazılmış, tek binary,
 terminal-öncelikli bir SSH JumpBox (bastion). Teleport'un hafif, kendi-barındırılan
