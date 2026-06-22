@@ -1,0 +1,16 @@
+# Derlenmiş binary'ler
+/jumpbox
+/jumpbox.exe
+*.exe
+
+# Çalışma zamanı veri/sırlar (asla commit etmeyin)
+*.db
+*.db-wal
+*.db-shm
+master.key
+host_ed25519
+*.log
+
+# Yerel config
+config.yaml
+config.local.yaml

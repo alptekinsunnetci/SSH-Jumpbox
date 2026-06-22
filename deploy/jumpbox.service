@@ -1,0 +1,38 @@
+[Unit]
+Description=JumpBox SSH Bastion
+Documentation=https://example.local/jumpbox
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=jumpbox
+Group=jumpbox
+ExecStart=/usr/local/bin/jumpbox -config /etc/jumpbox/config.yaml serve
+Restart=on-failure
+RestartSec=2
+
+# Port 22'ye root olmadan bağlanabilmek için.
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+# Sertleştirme.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+
+# Yalnızca bu dizinlere yazabilir (DB, log, host key/ana anahtar yeri).
+ReadWritePaths=/var/lib/jumpbox /var/log/jumpbox /etc/jumpbox
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,31 @@
+# JumpBox örnek yapılandırması — /etc/jumpbox/config.yaml
+# Tüm alanlar JUMPBOX_* ortam değişkenleriyle de geçersiz kılınabilir.
+
+# SSH sunucusunun dinleyeceği adres. Üretimde :22 önerilir (OS sshd başka porta taşınır).
+addr: ":22"
+
+# SQLite veritabanı dosyası.
+db_path: "/var/lib/jumpbox/jumpbox.db"
+
+# AES-256 ana anahtarı (32 ham bayt, izin 0600). 'jumpbox genkey' ile üretin.
+master_key_path: "/etc/jumpbox/master.key"
+
+# JumpBox SSH host anahtarı (ilk çalıştırmada otomatik üretilir, ed25519).
+host_key_path: "/etc/jumpbox/host_ed25519"
+
+# JSON denetim logları (NDJSON).
+audit_log_path: "/var/log/jumpbox/audit.log"
+
+# Varsayılan dil (kimlik doğrulanmadan önce): tr | en
+default_lang: "tr"
+
+# bcrypt parola hash maliyeti (>=12 önerilir).
+bcrypt_cost: 12
+
+# Google Authenticator'da görünecek sağlayıcı adı.
+totp_issuer: "JumpBox"
+
+# Kaba kuvvet koruması.
+ban:
+  threshold: 5      # bu kadar başarısız denemeden sonra geçici ban
+  window: 15m       # başarısızlıkların sayıldığı ve banın sürdüğü pencere
